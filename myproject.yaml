@@ -1,0 +1,180 @@
+data:
+  dataset: {name: Caltech101, samples: 8296, type: public}
+  datasetLoadOption: full
+  kfold: 1
+  mapping:
+    Category:
+      options: {}
+      port: OutputPort0
+      shape: ''
+      type: Categorical
+    Image:
+      options: {Augmentation: false, Height: 28, Normalization: true, Resize: false,
+        Scaling: 1, Width: 28, height_shift_range: 0, horizontal_flip: false, pretrained: None,
+        rotation_range: 0, shear_range: 0, vertical_flip: false, width_shift_range: 0}
+      port: InputPort0
+      shape: ''
+      type: Image
+  numPorts: 1
+  samples: {split: 0, test: 1660, training: 6636, validation: 0}
+  shuffle: true
+model:
+  connections:
+  - {source: Convolution2D_13, target: MaxPooling2D_5}
+  - {source: MaxPooling2D_4, target: Convolution2D_11}
+  - {source: Convolution2D_2, target: MaxPooling2D_1}
+  - {source: Convolution2D_5, target: Convolution2D_6}
+  - {source: Convolution2D_11, target: Convolution2D_12}
+  - {source: Input_1, target: Convolution2D_1}
+  - {source: Flatten_1, target: Dense_24}
+  - {source: Convolution2D_9, target: Convolution2D_10}
+  - {source: Convolution2D_4, target: MaxPooling2D_2}
+  - {source: Dense_15, target: Output_8}
+  - {source: Dense_13, target: Dense_14}
+  - {source: Convolution2D_8, target: Convolution2D_9}
+  - {source: MaxPooling2D_3, target: Convolution2D_8}
+  - {source: Convolution2D_6, target: Convolution2D_7}
+  - {source: Convolution2D_3, target: Convolution2D_4}
+  - {source: MaxPooling2D_5, target: Flatten_1}
+  - {source: Dense_14, target: Dense_15}
+  - {source: Convolution2D_1, target: Convolution2D_2}
+  - {source: MaxPooling2D_1, target: Convolution2D_3}
+  - {source: Convolution2D_12, target: Convolution2D_13}
+  - {source: MaxPooling2D_2, target: Convolution2D_5}
+  - {source: Convolution2D_7, target: MaxPooling2D_3}
+  - {source: Convolution2D_10, target: MaxPooling2D_4}
+  - {source: Dense_24, target: Dense_13}
+  layers:
+  - args: {}
+    class: Input
+    name: Input_1
+    x: 45
+    y: 25
+  - args: {border_mode: same, nb_col: '3', nb_filter: '64', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_1
+    x: 47
+    y: 122
+  - args: {border_mode: same, nb_col: '3', nb_filter: '64', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_2
+    x: 44
+    y: 219
+  - args: {}
+    class: MaxPooling2D
+    name: MaxPooling2D_1
+    x: 41
+    y: 322
+  - args: {border_mode: same, nb_col: '3', nb_filter: '128', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_3
+    x: 40
+    y: 429
+  - args: {border_mode: same, nb_col: '3', nb_filter: '128', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_4
+    x: 43
+    y: 544
+  - args: {}
+    class: MaxPooling2D
+    name: MaxPooling2D_2
+    x: 35
+    y: 660
+  - args: {border_mode: same, nb_col: '3', nb_filter: '256', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_5
+    x: 35
+    y: 770
+  - args: {border_mode: same, nb_col: '3', nb_filter: '256', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_6
+    x: 22
+    y: 873
+  - args: {border_mode: same, nb_col: '3', nb_filter: '256', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_7
+    x: 30
+    y: 997
+  - args: {}
+    class: MaxPooling2D
+    name: MaxPooling2D_3
+    x: 432
+    y: 52
+  - args: {border_mode: same, nb_col: '3', nb_filter: '512', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_8
+    x: 423
+    y: 161
+  - args: {border_mode: same, nb_col: '3', nb_filter: '512', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_9
+    x: 415
+    y: 264
+  - args: {border_mode: same, nb_col: '3', nb_filter: '512', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_10
+    x: 420
+    y: 367
+  - args: {}
+    class: MaxPooling2D
+    name: MaxPooling2D_4
+    x: 409
+    y: 509
+  - args: {border_mode: same, nb_col: '3', nb_filter: '512', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_11
+    x: 370
+    y: 625
+  - args: {border_mode: same, nb_col: '3', nb_filter: '512', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_12
+    x: 374
+    y: 731
+  - args: {border_mode: same, nb_col: '3', nb_filter: '512', nb_row: '3'}
+    class: Convolution2D
+    name: Convolution2D_13
+    x: 385
+    y: 839
+  - args: {}
+    class: MaxPooling2D
+    name: MaxPooling2D_5
+    x: 393
+    y: 954
+  - args: {}
+    class: Flatten
+    name: Flatten_1
+    x: 376
+    y: 1082
+  - args: {activation: relu, output_dim: '5000'}
+    class: Dense
+    name: Dense_13
+    x: 338
+    y: 1427
+  - args: {activation: relu, output_dim: '1000'}
+    class: Dense
+    name: Dense_14
+    x: 327
+    y: 1568
+  - args: {activation: relu, output_dim: '100'}
+    class: Dense
+    name: Dense_15
+    x: 293
+    y: 1679
+  - args: {}
+    class: Output
+    name: Output_8
+    x: 263
+    y: 1816
+  - args: {output_dim: '10000'}
+    class: Dense
+    name: Dense_24
+    x: 336
+    y: 1258
+params:
+  advance_params: true
+  batch_size: 32
+  is_custom_loss: false
+  loss_func: categorical_crossentropy
+  num_epoch: 10
+  optimizer: {lr: '0.01', name: Adam}
+project: myproject
